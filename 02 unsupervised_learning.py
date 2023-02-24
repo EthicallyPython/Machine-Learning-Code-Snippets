@@ -22,22 +22,4 @@ model = Model()
 ## training and testing model
 model.fit(df)
 
-"""
-# NOT REQUIRED IF YOU DON'T HAVE LABELS (ANSWERS FOR MACHINE)
-
-# EVALUATE MACHINE PERFORMANCE
-## seeing how well model did
-y_test = test_data
-predictions = model.labels_
-
-from sklearn.metrics import classification_report, confusion_matrix
-print(classification_report(y_test, predictions))
-print(confusion_matrix(y_test, predictions))
-
-## mean errors. Checks how close estimates are to actual values
-from sklearn.metrics import mean_absolute_error, mean_squared_error
-print(mean_absolute_error(y_test, predictions))
-print(mean_squared_error(y_test, predictions))
-### RMSE (root mean squared error)
-print(np.sqrt(mean_squared_error(y_test, predictions)))
-"""
+# If you don't have labels (original answers) for machine, you don't need to evaluate its performance.
