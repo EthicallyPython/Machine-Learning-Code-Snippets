@@ -1,3 +1,12 @@
+# column you want to use for predictions
+column_to_predict = ''
+
+# X are your inputs
+X = df.drop(column_to_predict, axis=1).values
+
+# y is what you want to predict
+y = df[column_to_predict].values
+
 ## split data into training and test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
