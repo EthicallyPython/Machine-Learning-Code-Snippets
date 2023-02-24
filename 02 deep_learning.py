@@ -61,8 +61,8 @@ model.add(Dense(1, activation='relu'))
 model.fit(x=X_train, y=y_train,
           epochs=250,
           validation_data=(X_test, y_test),
-         	batch_size=128 # smaller = longer, but less likely to overfit
-      )
+          batch_size=128 # smaller = longer, but less likely to overfit
+         )
 
 
 loss = pd.DataFrame(model.history.history)
