@@ -16,15 +16,18 @@ from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler() #replace with any scaler
   
 X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+X_test = scaler.fit_transform(X_test)
 
-# adding layers
+#######################################################################################
+
+# MACHINE LEARNING
 from tensorflow.keras.models import Sequential # base model
 from tensorflow.keras.layers import Dense, Dropout # adds layers
+
 model = Sequential()
 
 ## input layer. Based on number of features
-model.add(Dense(4, activation='relu'))
+model.add(Dense(len(df.columns), activation='relu'))
 
 ## hidden layers
 model.add(Dense(4, activation='relu'))
@@ -41,17 +44,17 @@ model.add(Dense(1, activation='relu'))
 
 ## compiling. Optimizer can change depending on problem
 ### For a multi-class classification problem
-#model.compile(optimizer='rmsprop',
+#model.compile(optimizer='adam',
 #              loss='categorical_crossentropy',
 #              metrics=['accuracy'])
 
 ### For a binary classification problem
-#model.compile(optimizer='rmsprop',
+#model.compile(optimizer='adam',
 #              loss='binary_crossentropy',
 #              metrics=['accuracy'])
 
 ### For a mean squared error regression problem
-#model.compile(optimizer='rmsprop',
+#model.compile(optimizer='adam',
 #              loss='mse')
 
 
