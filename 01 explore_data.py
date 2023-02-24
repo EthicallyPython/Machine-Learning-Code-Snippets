@@ -31,3 +31,7 @@ sns.pairplot(df) # if dataset is big, comment this line out
 sns.histplot(df['column'])
 sns.countplot(df['column'])
 sns.scatterplot(x='', y='', data=df)
+
+## one-hot encoding
+### Look for invalid data
+df.select_dtypes(['object']).columns
