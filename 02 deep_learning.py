@@ -96,3 +96,12 @@ plt.show()
 
 # round predictions for classification report
 predictions = [np.round(prediction) for prediction in predictions]
+
+# load model
+from tensorflow.keras.models import load_model
+
+file = ''
+model.load(file)
+
+## save model
+model.save(file)
