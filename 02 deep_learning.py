@@ -71,18 +71,15 @@ model.fit(x=X_train,
           callbacks = [early_stop]
         )
 
-## visualize loss
-loss = pd.DataFrame(model.history.history)
-loss.plot() # if loss and val loss are diverging, you're overfitting
-
-# model metrics
-predictions = model.predict(X_test)
-
 # EVALUATE MODEL
+predictions = model.predict(X_test)
 """
 if loss or accuracy diverges, you are overfitting
 """
 ## loss
+loss = pd.DataFrame(model.history.history)
+
+### visualization
 loss_train = loss['loss']
 loss_val = loss['val_loss']
 epochs = range(len(loss))
@@ -95,3 +92,7 @@ plt.legend()
 plt.show()
 
 ## accuracy
+#todo: implement
+
+# round predictions for classification report
+predictions = [np.round(prediction) for prediction in predictions]
