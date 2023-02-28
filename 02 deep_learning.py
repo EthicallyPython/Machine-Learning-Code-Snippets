@@ -16,7 +16,7 @@ from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler() #replace with any scaler
   
 X_train = scaler.fit_transform(X_train)
-X_test = scaler.fit_transform(X_test)
+X_test = scaler.transform(X_test)
 
 #######################################################################################
 
