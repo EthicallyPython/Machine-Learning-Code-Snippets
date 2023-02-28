@@ -22,3 +22,5 @@ print(np.sqrt(mean_squared_error(y_test, predictions)))
 
 ## show relations between column and number. For logistic and linear regression only
 coef = pd.DataFrame(model.coef_, X.columns, columns=['Coeff'])
+
+## DEEP LEARNING: see 02 deep_learning.py
