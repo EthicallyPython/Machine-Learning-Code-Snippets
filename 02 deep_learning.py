@@ -42,7 +42,7 @@ model.add(Dropout(0.5)) # turns off 50% of neurons randomly at this layer
 model.add(Dense(1, activation='relu'))
 
 
-## compiling. Optimizer can change depending on problem
+## compiling. Loss depends on problem (i.e. classification, regression, etc.)
 ### For a multi-class classification problem
 #model.compile(optimizer='adam',
 #              loss='categorical_crossentropy',
@@ -57,20 +57,41 @@ model.add(Dense(1, activation='relu'))
 #model.compile(optimizer='adam',
 #              loss='mse')
 
+## prevent overfitting
+from tensorflow.keras.callbacks import EarlyStopping
+early_stop = EarlyStopping(monitor='val_loss', mode='min', verbose=1,
+							patience=25) # waits 25 epochs before stopping model
 
+## fit model to data
 model.fit(x=X_train,
           y=y_train,
           epochs=250,
           validation_data=(X_test, y_test),
-          batch_size=128 # smaller = longer, but less likely to overfit
+          batch_size=128, # smaller = longer, but less likely to overfit
+          callbacks = [early_stop]
         )
 
-
+## visualize loss
 loss = pd.DataFrame(model.history.history)
-
-# if loss and val loss are diverging, you're overfitting
-loss.plot()
+loss.plot() # if loss and val loss are diverging, you're overfitting
 
 # model metrics
 predictions = model.predict(X_test)
 
+# EVALUATE MODEL
+"""
+if loss or accuracy diverges, you are overfitting
+"""
+## loss
+loss_train = loss['loss']
+loss_val = loss['val_loss']
+epochs = range(len(loss))
+plt.plot(epochs, loss_train, 'g', label='Training loss')
+plt.plot(epochs, loss_val, 'b', label='validation loss')
+plt.title('Training and Validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+## accuracy
