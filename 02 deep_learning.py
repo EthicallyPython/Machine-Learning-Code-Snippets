@@ -7,11 +7,11 @@ X = df.drop(column_to_predict, axis=1).values
 # y is what you want to predict
 y = df[column_to_predict].values
 
-## split data into training and test set
+# split data into training and test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
-## scale data. ALL DATA MUST BE SCALED
+# scale data. ALL DATA MUST BE SCALED
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler() #replace with any scaler
   
@@ -64,7 +64,7 @@ early_stop = EarlyStopping(monitor='val_loss', mode='min', verbose=1,
 
 ## fit model to data
 model.fit(x=X_train,
-          y=y_train,
+					y=y_train,
           epochs=250,
           validation_data=(X_test, y_test),
           batch_size=128, # smaller = longer, but less likely to overfit
@@ -83,8 +83,8 @@ loss = pd.DataFrame(model.history.history)
 loss_train = loss['loss']
 loss_val = loss['val_loss']
 epochs = range(len(loss))
-plt.plot(epochs, loss_train, 'g', label='Training loss')
-plt.plot(epochs, loss_val, 'b', label='validation loss')
+plt.plot(epochs, loss_train, 'g', label='Training Loss')
+plt.plot(epochs, loss_val, 'b', label='Validation Loss')
 plt.title('Training and Validation loss')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
