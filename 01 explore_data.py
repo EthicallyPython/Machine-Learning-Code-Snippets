@@ -42,6 +42,6 @@ print(df.columns)
 ### Exploring data (aka Exploratory Data Analysis)
 sns.heatmap(df.corr(), annot=True)
 sns.pairplot(df) # if dataset is big, comment this line out
-sns.histplot(df['column'])
-sns.countplot(df['column'])
+sns.histplot(x='column', data=df)
+sns.countplot(x='column', data=df)
 sns.scatterplot(x='', y='', data=df)
