@@ -8,7 +8,8 @@ from sklearn.metrics import classification_report, ConfusionMatrixDisplay, confu
 print(classification_report(y_test, predictions))
 print(ConfusionMatrixDisplay.from_predictions(y_test, predictions, display_labels=[False, True]))
 
-
+### removes lines on classification report (run twice for it to work)
+sns.reset_orig()
 
 ## REGRESSION
 from sklearn.metrics import mean_absolute_error, mean_squared_error
