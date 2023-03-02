@@ -65,7 +65,7 @@ early_stop = EarlyStopping(monitor='val_loss', mode='min', verbose=1,
 ## fit model to data
 model.fit(x=X_train,
 					y=y_train,
-          epochs=250,
+					epochs=250,
           validation_data=(X_test, y_test),
           batch_size=128, # smaller = longer, but less likely to overfit
           callbacks = [early_stop]
