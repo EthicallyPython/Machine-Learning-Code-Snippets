@@ -32,6 +32,16 @@ sns.histplot(df['column'])
 sns.countplot(df['column'])
 sns.scatterplot(x='', y='', data=df)
 
-## one-hot encoding
-### Look for invalid data
-df.select_dtypes(['object']).columns
+## one-hot encoding. Look for invalid data. Turn them into numbers
+invalid_col = df.select_dtypes(['object']).columns
+dummies = pd.get_dummies(df[invalid_col])
+
+"""
+drop columns with:
+- 2 categories or more
+"""
+col_to_drop = [""]
+dummies.drop(col_to_drop, axis=1, inplace=True)
+
+### add encoded columns. Drop invalid columns from df
+df_new = pd.concat([df.drop(invalid_col, axis=1), dummies], axis=1)
