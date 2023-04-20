@@ -19,6 +19,7 @@ drop outliers and irrelevant data here
 
 """
 UNDERSAMPLING: balances uneven datasets by keeping all of the data in the minority class and selecting randomly from majority class
+
 column_to_predict = ''
 
 majority = df[df[column_to_predict] == 0]
@@ -26,8 +27,8 @@ minority = df[df[column_to_predict] == 1]
 
 # grab random samples (as many as there are in minority class)
 undersample = []
-for i in minority['age'].values:
-    undersample.append(majority.iloc[random.randint(0, len(majority))])
+for i in minority[column_to_predict].values:
+    undersample.append(majority.iloc[random.randint(0, len(majority)-1)])
 
 undersample = pd.DataFrame(undersample)
 
