@@ -53,10 +53,11 @@ dummies.drop(col_to_drop, axis=1, inplace=True)
 df_new = pd.concat([df.drop(invalid_col, axis=1), dummies], axis=1)
 
 ## Visualize data
-print(df.head())
-print(df.describe())
-print(df.info())
-print(df.columns)
+display(df.head())
+print('\nDescribe\n')
+display(df.describe())
+print('\nInformation\n')
+display(df.info())
 
 ### Exploring data (aka Exploratory Data Analysis)
 sns.heatmap(df.corr(), annot=True)
