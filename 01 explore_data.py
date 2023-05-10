@@ -38,6 +38,10 @@ undersampled_data = pd.concat([minority, undersample])
 ## read csv file
 df = pd.read_csv('file.csv')
 
+# get number of unique values
+for column in df:
+  print(f"{column}: {df[column].nunique()}")
+
 ## one-hot encoding. Look for invalid data. Turn them into numbers
 invalid_col = df.select_dtypes(['object']).columns
 dummies = pd.get_dummies(df[invalid_col])
