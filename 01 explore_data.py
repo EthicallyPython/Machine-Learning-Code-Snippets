@@ -52,15 +52,17 @@ dummies.drop(col_to_drop, axis=1, inplace=True)
 ### add encoded columns. Drop invalid columns from df
 df_new = pd.concat([df.drop(invalid_col, axis=1), dummies], axis=1)
 
-## Visualize data
+# Visualize data
 display(df.head())
 print('\nDescribe\n')
 display(df.describe())
 print('\nInformation\n')
 display(df.info())
 
-### Exploring data (aka Exploratory Data Analysis)
-sns.heatmap(df.corr(), annot=True)
+# Exploring data (aka Exploratory Data Analysis)
+numeric_types = ['int64', 'float64'] # select only numerical values
+numerical_df = df.select_dtypes(include=numeric_types)
+sns.heatmap(numerical_df.corr(), annot=True)
 sns.pairplot(df) # if dataset is big, comment this line out
 sns.histplot(x='column', data=df)
 sns.countplot(x='column', data=df)
