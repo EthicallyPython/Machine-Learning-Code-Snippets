@@ -1,4 +1,8 @@
-# CROSS VALIDATION: split data into training and test sets
+"""
+CROSS VALIDATION: split data into training and test sets
+
+below are different types of cross-validation that you can perform on data.
+"""
 
 ## hold-out
 from sklearn.model_selection import train_test_split
